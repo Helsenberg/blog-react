@@ -1,0 +1,161 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Helvetica Neue, sans-serif;
+}
+
+.layout-posts:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.layout-posts {
+    padding: 20px 10px;
+    ;
+    border: 1px solid #9d9d9d;
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.layout-posts-left {
+    width: 400px;
+    float: left;
+}
+
+.layout-posts-right {
+    width: 590px;
+    float: right;
+}
+
+.posts {
+    width: 100%;
+}
+
+.post {
+    color: #485663;
+    width: 100%;
+    border: 1px solid #e4e4e4;
+    border-radius: 2px;
+    padding: 18px 20px;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+    min-height: 140px;
+    box-sizing: border-box
+}
+
+.post span {
+    font-size: 160px;
+    opacity: .5;
+    position: absolute;
+    right: -5px;
+    bottom: -20px;
+    color: #ccc;
+    margin: 0;
+    padding: 0;
+    z-index: 0;
+    font-weight: 600;
+    display: block;
+    line-height: 160px;
+}
+
+.post h3 {
+    font-size: 16px;
+    margin: 0 0 6px;
+    position: relative;
+    z-index: 2;
+    text-transform: uppercase;
+}
+
+.post p {
+    font-size: 14px;
+    position: relative;
+    z-index: 2;
+}
+
+.post a {
+    color: #485663;
+}
+
+.load-more {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+}
+
+.post-page {
+    width: 1000px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.post-page .post {
+    min-height: 0;
+}
+
+.back {
+    margin-bottom: 10px;
+}
+
+.back a {
+    font-size: 14px;
+    color: #9d9d9d;
+    text-decoration: underline
+}
+
+.comments {
+    margin: 20px 0;
+}
+
+.comment {
+    border-top: 1px solid #485663;
+    padding-top: 10px;
+}
+
+.comment:first-child{
+    border-top: 0;
+    padding-top: 0;
+}
+
+.comment div,.author div {
+    font-size: 16px;
+    margin: 0 0 6px;
+    position: relative;
+    z-index: 2;
+    text-transform: uppercase;
+}
+
+.comment span,.author span {
+    font-size: 13px;
+    display: block;
+    margin: 5px 0 0;
+    position: static;
+    line-height: 1.2;
+    opacity: 1;
+    font-weight: bold;
+    color: #ccc;
+}
+
+.comment p {
+    font-size: 14px;
+}

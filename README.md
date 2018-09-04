@@ -1,1 +1,2 @@
-# blog-react
+- npm install
+- npm start
