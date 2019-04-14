@@ -2,9 +2,9 @@ import {
     FETCH_POSTS_SUCCESS,
     LOAD_MORE_POSTS_SUCCESS,
     SEARCH_POSTS
-} from "actions/types";
+} from "../../actions/types";
 
-import { uniquePosts } from "selectors";
+import { uniquePosts } from "../../selectors";
 
 const initialState = {
     data: [],

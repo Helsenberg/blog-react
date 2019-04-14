@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { searchPosts } from "actions";
+import { searchPosts } from "../../actions";
 import './styles.css';
 
 class Search extends Component {

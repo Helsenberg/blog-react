@@ -1,10 +1,10 @@
-import { FETCH_POST_BY_ID_SUCCESS } from "actions/types";
+import { FETCH_COMMENTS_BY_ID_POST_SUCCESS } from "../../actions/types";
 
-const initialState = null;
+const initialState = [];
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case FETCH_POST_BY_ID_SUCCESS:
+        case FETCH_COMMENTS_BY_ID_POST_SUCCESS:
             return action.payload;
         default:
             return state;

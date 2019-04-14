@@ -8,11 +8,11 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import reducers from 'reducers';
+import reducers from './reducers';
 
-import layoutPosts from "containers/layoutPosts";
-import Posts from "containers/posts";
-import Post from "containers/post";
+import layoutPosts from "./containers/layoutPosts";
+import Posts from "./containers/posts";
+import Post from "./containers/post";
 
 const store = createStore(reducers, composeWithDevTools(
     applyMiddleware(thunk)

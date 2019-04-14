@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { fetchPosts, loadMorePosts } from "actions";
-import { getPosts } from "selectors";
+import { fetchPosts, loadMorePosts } from "../../actions";
+import { getPosts } from "../../selectors";
 import { Link } from "react-router-dom";
 
 class Posts extends Component {

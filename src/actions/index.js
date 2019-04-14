@@ -22,7 +22,7 @@ import {
     fetchPostById as fetchPostByIdApi,
     fetchAuthorById as fetchAuthorByIdApi,
     fetchCommentsByPostId as fetchCommentsByPostIdApi,
-} from "api";
+} from "../api";
 
 export const fetchPosts = (start = 0, limit = 10) => async dispatch => {
     dispatch({ type: FETCH_POSTS_START });

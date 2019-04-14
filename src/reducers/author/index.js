@@ -1,4 +1,4 @@
-import { FETCH_AUTHOR_BY_ID_SUCCESS } from "actions/types";
+import { FETCH_AUTHOR_BY_ID_SUCCESS } from "../../actions/types";
 
 const initialState = null;
 

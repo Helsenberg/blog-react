@@ -1,6 +1,6 @@
 import {
     LOAD_MORE_POSTS_SUCCESS
-} from "actions/types";
+} from "../../actions/types";
 
 const initialState = {
     start: 0,

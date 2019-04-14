@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { fetchPostById, fetchAuthorById, fetchCommentsByPostId } from "actions";
+import { fetchPostById, fetchAuthorById, fetchCommentsByPostId } from "../../actions";
 import { Link } from "react-router-dom";
 
 class Post extends Component {
