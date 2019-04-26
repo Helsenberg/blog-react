@@ -4,8 +4,6 @@ import {
     SEARCH_POSTS
 } from "../../actions/posts";
 
-import { uniquePosts } from "../../helpers/selectors";
-
 const initialState = {
     data: [],
     start: 0,
@@ -18,12 +16,15 @@ export default (state = initialState, action) => {
         case FETCH_POSTS_SUCCESS:
             return {
                 ...state,
-                data: uniquePosts(state.data.concat(action.payload))
+                data: action.payload
             };
         case LOAD_MORE_POSTS_SUCCESS:
             return {
                 ...state,
-                data: uniquePosts(state.data.concat(action.payload.posts)),
+                data: [
+                    ...state.data,
+                    ...action.payload.posts
+                ],
                 start: action.payload.start
             };
         case SEARCH_POSTS:

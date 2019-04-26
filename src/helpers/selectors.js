@@ -7,20 +7,6 @@ export const getPosts = posts => {
     return posts.data.filter(applySearch);
 }
 
-export const uniquePosts = posts => {
-    var uniqueIds = {};
-    for (let key in posts) {
-        let post = posts[key];
-        let id = String(post.id);
-        uniqueIds[id] = true;
-    }
-    let returnedArr = [];
-    for (let postId in uniqueIds) {
-        returnedArr.push(getPostById(posts, postId));
-    }
-    return returnedArr;
-}
-
 export const getPostById = (posts, id) => {
     return posts.find(post => Number(post.id) === Number(id)) || null;
 }
