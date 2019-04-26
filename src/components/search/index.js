@@ -1,16 +1,15 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { searchPosts } from "../../actions";
+import PropTypes from 'prop-types';
 import './styles.css';
 
-class Search extends Component {
+export default class Search extends Component {
 
     handleSubmit(event){
         event.preventDefault();
     }
 
     handleChange(event) {
-        this.props.searchPosts(event.target.value);
+        this.props.onSearch(event.target.value);
     }
 
     render() {
@@ -25,8 +24,10 @@ class Search extends Component {
     }
 }
 
-const mapDispatchToProps = {
-    searchPosts
+Search.propTypes = {
+    onSearch: PropTypes.func.isRequired,
+};
+
+Search.defaultProps = {
 }
 
-export default connect(null, mapDispatchToProps)(Search);

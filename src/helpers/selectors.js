@@ -1,12 +1,10 @@
 
-export const getPosts = state => {
-    const reg = new RegExp(state.posts.search, 'gi');
+export const getPosts = posts => {
+    const reg = new RegExp(posts.search, 'gi');
     const applySearch = item => {
         return reg.test(item.title);
     };
-
-    const posts = state.posts.data.filter(applySearch);
-    return posts;
+    return posts.data.filter(applySearch);
 }
 
 export const uniquePosts = posts => {
@@ -24,11 +22,9 @@ export const uniquePosts = posts => {
 }
 
 export const getPostById = (posts, id) => {
-    for(let key in posts){
-        let post = posts[key];
-        if (Number(post.id) === Number(id)){
-            return post;
-        }
-    }
-    return false;
+    return posts.find(post => Number(post.id) === Number(id)) || null;
+}
+
+export const getCommentById = (comments, id) => {
+    return comments.find(comment => Number(comment.id) === Number(id)) || null;
 }

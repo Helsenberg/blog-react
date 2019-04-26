@@ -1,72 +1,38 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from "react-redux";
-import { fetchPostById, fetchAuthorById, fetchCommentsByPostId } from "../../actions";
-import { Link } from "react-router-dom";
+import { fetchPostById, unsetPost } from "../../actions/post";
+import Post from '../../components/post';
 
-class Post extends Component {
+class PostContainer extends React.Component {
 
     componentDidMount() {
         this.props.fetchPostById(this.props.match.params.postId);
-        this.props.fetchCommentsByPostId(this.props.match.params.postId);
-        this.props.fetchAuthorById(this.props.match.params.userId);
+    }
+
+    componentWillUnmount(){
+        this.props.unsetPost();
     }
 
     render() {
-        const { post } = this.props;
-        if(!post){
-            return null
+        if(!this.props.post){
+            return null;
         }
-        const { comments } = this.props;
-        const { author } = this.props;
-        return (
-            <div className="post-page">
-                <div className="back">
-                    <Link to="/">Back</Link>
-                </div>
-                <div className="post">
-                    <h3>
-                        {post.title}
-                    </h3>
-                    <p>{post.body}</p>
-                    {
-                        author ?
-                        <div className="author">
-                            Author: <br/>
-                            <div>{author.name}</div>
-                            <span>{author.email}</span>
-                        </div>
-                        : null
-                    }
-                </div>
-                <div className="comments">
-                    <h3>Comments:</h3>
-                    {
-                        comments.map((comment, index) => {
-                            return(
-                                <div className="comment" key={index}>
-                                    <div>{comment.name}</div>
-                                    <span>{comment.email}</span>
-                                    <p>{comment.body}</p>
-                                </div>
-                            )
-                        })
-                    }
-                </div>
-            </div>
-        )
+        return <Post
+                    title={this.props.post.title}
+                    body={this.props.post.body}
+                    id={this.props.post.id}
+                    userId={this.props.post.userId}
+                />;
     }
 }
 
 const mapDispatchToProps = {
     fetchPostById,
-    fetchAuthorById,
-    fetchCommentsByPostId
-}
+    unsetPost
+};
 
 const mapStateToProps = state => ({
-    post: state.post,
-    author: state.author,
-    comments: state.comments
-})
+    post: state.post
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Post)
+export default connect(mapStateToProps, mapDispatchToProps)(PostContainer);

@@ -1,48 +1,24 @@
-import React, { Component } from 'react';
-import { connect } from "react-redux";
-import { fetchPosts, loadMorePosts } from "../../actions";
-import { getPosts } from "../../selectors";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { connect } from 'react-redux';
+import { fetchPosts, loadMorePosts } from '../../actions/posts';
+import { getPosts } from '../../helpers/selectors';
+import Posts from '../../components/posts';
 
-class Posts extends Component {
+class PostsContainer extends React.Component {
 
-    componentDidMount() {
+    componentDidMount(){
         this.props.fetchPosts();
     }
 
-    loadMore = () => {
-        const { pagination } = this.props;
-        const start = pagination.start;
-        const limit = pagination.limit;
-        this.props.loadMorePosts(start + limit);
+    loadMore(){
+        this.props.loadMorePosts(this.props.start + this.props.limit);
     }
 
     render() {
-        const { posts } = this.props;
-        if (!posts.length){
+        if (this.props.postsIds.length === 0){
             return null;
         }
-        return (
-            <div>
-                <div className="posts">
-                    {
-                        posts.map((post, index) => {
-                            const body = post.body.length > 60 ? post.body.substr(0, 59) + '...' : post.body;
-                            return(
-                                <div className="post" key={index}>
-                                    <span>{post.id}</span>
-                                    <h3>
-                                        <Link to={`/posts/${post.userId}/${post.id}`}>{post.title}</Link>
-                                    </h3>
-                                    <p>{body}</p>
-                                </div>
-                            )
-                        })
-                    }
-                    <div onClick={this.loadMore} className="load-more">Load more</div>
-                </div>
-            </div>
-        )
+        return <Posts postsIds={this.props.postsIds} loadMore={this.loadMore.bind(this)}/>
     }
 }
 
@@ -52,8 +28,9 @@ const mapDispatchToProps = {
 }
 
 const mapStateToProps = state => ({
-    posts: getPosts(state),
-    pagination: state.pagination
+    start: state.posts.start,
+    limit: state.posts.limit,
+    postsIds: getPosts(state.posts).map(post => post.id)
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Posts)
+export default connect(mapStateToProps, mapDispatchToProps)(PostsContainer);
